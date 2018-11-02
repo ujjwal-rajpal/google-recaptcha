@@ -175,6 +175,21 @@ function recaptcha_settings_page() {
 }
 
 /**
+  * Function  creates a setting link to the pluging link page 
+  *
+*/
+
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__),'setting_link' );
+
+function setting_link( $links )
+{
+	$mylinks = array(
+	 '<a href="' . admin_url( 'options-general.php?page=recaptcha' ) . '">Settings</a>',
+	 );
+	return array_merge( $links, $mylinks );
+}
+
+/**
   * Function to remove values from database when one deactivate the plugin
   *
   */
